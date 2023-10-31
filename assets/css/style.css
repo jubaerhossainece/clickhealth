@@ -537,7 +537,7 @@ h2{
   margin-left: -70px;
 }
 .core-value-card-2{
-  margin-left: -15px;
+  margin-left: -30px;
 }
 .core-value-card-3{
   margin-left: 10px;
@@ -545,6 +545,11 @@ h2{
 .core-value-card-4{
   margin-left: -30px;
 }
+
+.core-value-card-5{
+  margin-left: -70px;
+}
+
 .core-value-card:hover{
   box-shadow: 0 0 10px 0px rgba(0,0,0,0.5);
   -webkit-box-shadow: 0 0 10px 0px rgba(0,0,0,0.5);
@@ -571,6 +576,13 @@ h2{
   margin-top: 5px;
   margin-left: -55px;
 }
+
+.core-value-card-5::before{
+  content: url(../img/icon-core-value-04.png);
+  margin-top: 5px;
+  margin-left: -55px;
+}
+
 .core-value-card p{
   font-size: 18px;
   line-height: 24px;
@@ -1139,7 +1151,13 @@ animation-delay: 4s;
 .package-section > p{
   line-height: normal;
   margin-bottom: 6px;
-  font-size: 15px;
+}
+
+
+.package-section.services > p{
+  line-height: normal;
+  margin-bottom: 6px;
+  font-size: 20px;
 }
 
 .package-section-1{
