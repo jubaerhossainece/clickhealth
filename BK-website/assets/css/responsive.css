@@ -1,0 +1,552 @@
+/*Responsive*/
+
+@media only screen and (min-width:1200px) and (max-width: 1500px) {
+  .navbar-brand{
+    width: 25%;
+  }  
+  .button-cover, .knobs, .layer
+  {
+      left: 22%; 
+  }
+  .logo{
+    margin-top: 0;
+    width: 95%;
+  } 
+  .main-menu li a{ 
+    font-size: 17px;
+    margin:0 10px 0 0; 
+  }
+  .hero-area {
+    /* background: url(../img/bg-laptop.jpg); */
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+  }
+  .content-left{
+    padding: 300px 0 120px 0;
+  }
+  .content-right{
+    padding: 240px 0 50px 100px;
+  }
+  .hero-buttons{
+    margin-top: 20px;
+  }
+  .btn-demo{ 
+    padding: 15px 30px 15px 35px;
+    line-height: 15px;
+    margin-top: 20px;
+    }
+  .app-download-title{
+    font-size: 34px;
+    padding-top: 80px;
+  }
+  .designation-detail{
+    min-height: 340px;
+  }
+}
+
+/*Large devices (desktops, less than 1200px)*/
+@media (max-width: 1199px) { 
+  .navbar-brand{
+    width: 25%;
+  }  
+  .button-cover, .knobs, .layer
+  {
+      left: 20%;
+  }
+  .logo{
+    margin-top: 0;
+    width: 95%;
+  } 
+  .hero-area {
+    /* background: url(../img/bg-tab.jpg); */
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+  }
+  .content-left{
+    padding: 260px 0 60px 0;
+  }
+  .content-right{
+    padding: 240px 0 50px 100px;
+  }
+  .content-left h1{
+    font-size: 40px;
+    line-height: 46px;
+  }
+  .content-left h3{
+    font-size: 34px;
+    margin-top: 5px;
+  }
+  .hero-buttons{
+    margin-top: 30px;
+  }
+  .btn-demo{
+    margin-top: 10px;
+  }
+  .family-doc-card p{
+    max-width: 700px;
+    padding-left: 10px;
+  }
+  .img-video-fallback{
+    margin-top: 70px;
+  }
+  .core-value-card-1{
+    margin-left: -110px;
+  }
+  .app-download-title{
+    font-size: 29px;
+    padding-top: 80px;
+  }
+  .btn-app-store img{
+    width: 40%;
+  }
+  .img-team{
+    width: 110%;
+  }
+  .designation-detail{
+    min-height: 200px;
+  }
+  .copyright{
+    position: inherit;
+  }
+  .price-two-body-left > div, .price-two-body-right > div{
+    min-height: 100px;
+  }
+  .price-three-title{
+    font-size: 18px;
+  }
+  .service-card p{
+    min-height: 210px;
+   }
+  .faq-area{
+    padding: 60px 0 0 0;
+    margin-top: 80px;
+  }
+  .img-faq{
+    bottom: 0!important;
+    margin-bottom: -50px!important;
+  }
+  .package-section{
+    height: 140px;
+  }
+  .service-1{
+    height: 60px;
+  }
+  .service-2{
+    height: 120px;
+  }
+  .service-3{
+    height: 160px;
+  }
+  .service-4{
+    height: 180px;
+  }
+  .address{
+    font-size: 13px;
+  }
+}
+
+/*iPad Pro Portrait only*/ 
+@media only screen and (min-width: 1024px) and (orientation: portrait) {
+  .main-menu li a{
+    font-size: 13px;
+    margin:0 20px 0 0;
+  }
+  .core-value-card-2{
+    margin-left: -60px;
+  }
+}
+
+/*iPad Pro Landscape only*/  
+@media only screen and (min-width: 1366px) and (orientation: landscape) {
+  .main-menu li a{
+    font-size: 16px;
+    margin:0 5px 0 0;
+  }
+ 
+}
+
+/*iPad Portrait only*/ 
+@media only screen and (min-width: 768px) and (orientation: portrait) {
+  .price-three-body-left > div, .price-three-body-right > div{
+    min-height: 100px;
+  }
+  .price-three-body-left div:first-child, .price-three-body-right div:first-child{
+    min-height: 60px;
+  }
+}
+/*iPad Landscape only only*/
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+  .main-menu li a{
+    font-size: 13px;
+    margin:0 5px 0 0;
+  }
+  .core-value-card-2{
+    margin-left: -60px;
+  }
+}
+
+/*iPad only*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  
+ }
+
+/*Medium devices (tablets, less than 992px)*/
+@media (max-width: 991px) {  
+.navbar-brand{
+  width: 70%;
+}  
+.logo{
+  margin-top: 0;
+  width: 60%;
+}  
+.navbar-toggler{
+  outline: none;
+}
+.navbar-toggler:active, .navbar-toggler:hover, .navbar-toggler:focus{
+  outline: none;
+}
+.header-area {
+  background: rgba(256, 256, 256, 1);
+}
+.main-menu li a{
+  color: #222;
+}
+.main-menu li:last-child a{
+  margin-top: 10px!important;
+}
+.btn-login{
+  margin-bottom: 20px;
+}
+.hero-area {
+  /* background: url(../img/bg-mobile.jpg); */
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+}
+.btn-demo{ 
+  padding: 10px 26px;
+}
+.content-left{
+  padding: 10px 0 80px 0;
+}
+.content-right{
+  padding: 240px 0 0 40px;
+}
+.img-core-value{
+  margin-top: -10px;
+}
+.play-btn{
+  width: 110px;
+  height: 110px;
+}
+.core-value-card-1{
+  margin-top: 50px;
+  margin-left: -50px;
+}
+.testimonial h3{
+  margin-top: 20px;
+  font-size: 24px;
+}
+.img-consultent{
+  width: 50%;
+}
+.designation-detail{
+  min-height: 220px;
+}
+.copyright{
+  position: inherit;
+  font-size: 16px;
+}
+.faq-area{
+  padding: 60px 0 0 0;
+  margin-top: 80px;
+}
+.img-faq{
+  position: initial;
+  bottom: 0!important;
+  margin-bottom: 0!important;
+}
+.price-one-header-left h4{
+  font-size: 20px;
+}
+.price-one-header-right h3{
+  font-size: 28px;
+}
+.price-two-body-left > div, .price-two-body-right > div{
+  min-height: 105px;
+}
+.price-three-title{
+  font-size: 14px;
+}
+.service-card p{
+  min-height: 100px;
+ }
+ .service-card-header i{
+   transform: rotate(90deg);
+ }
+.package-section{
+  height: 180px;
+}
+.service-1{
+  height: 120px;
+}
+.service-2{
+  height: 160px;
+}
+.service-3{
+  height: 200px;
+}
+.service-4{
+  height: 260px;
+}
+}
+
+/*Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767px) {
+  .navbar-brand{
+    width: 55%;
+  } 
+  .button-cover, .knobs, .layer
+  {
+    top: 4px;
+    left: 38%;
+  }
+  .logo{ 
+    margin-top: -5px;
+    width: 80%;
+  }
+  .hero-area {
+    /* background: url(../img/bg-mobile.jpg); */
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+  }
+  .content-left{
+    padding: 20px 0 60px 0;
+  }
+  .content-right{
+    padding: 240px 0 0 0;
+  }
+  .btn-demo{ 
+    margin-top: 10px;
+    padding: 10px 26px;
+  }
+  .content-left h1{
+    font-size: 40px;
+    line-height: 46px;
+    margin-top: 20px;
+  }
+  .img-video-fallback{
+    margin-top: 50px;
+  }
+  .play-btn{
+    width: 65px;
+    height: 65px;
+  }
+  .core-value-card-2{
+    margin-left: -10px;
+  }
+  .footer-right{
+    float: left;
+  }
+  .copyright{
+    position: inherit;
+    font-size: 14px;
+  }
+  .price-one-header-left{
+    min-height: 100px;
+  }
+  .price-one-header-right{
+    min-height: 100px;
+  }
+  .price-one-header-left h4{
+    font-size: 20px;
+  }
+  .price-one-header-right h3{
+    font-size: 24px;
+  }
+  .price-three-header-left{
+    border-radius: 0;
+  } 
+  .price-three-header-right{
+    border-radius: 0;
+  } 
+  .price-three-body-left > div, .price-three-body-right > div{
+    min-height: 40px;
+  }
+  .price-three-body-left div:first-child, .price-three-body-right div:first-child{
+    min-height: 40px;
+  }
+  h2:first-child, .h2:first-child {
+    margin-top: 10px;
+  }
+  .price-three-title{
+    font-size: 15px;
+  }
+  .package-section{
+    height: 250px;
+  }
+  .service-1{
+    height: 165px;
+  }
+  .service-2{
+    height: 180px;
+  }
+  .service-3{
+    height: 280px;
+  }
+  .service-4{
+    height: 330px;
+  }
+  .whatsapp_float {
+    width: 40px;
+    height: 40px;
+    bottom: 43px;
+    right: 115px;
+  }
+  .col-mobile{
+    width: 230px!important;
+    display: inline-block;
+  }
+  .price-title-width{
+    width: 190px!important;
+  }
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575px) { 
+  .navbar-brand{
+    width: 48%;
+  }
+  .button-cover, .knobs, .layer
+  {
+    left: 34%;
+  }
+  .logo{ 
+    margin-top: -5px;
+    width: 95%;
+  }
+  .hero-area {
+    /* background: url(../img/bg-mobile.jpg); */
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+  }
+  .content-left{
+    padding: 0 0 60px 0;
+  }
+  .content-right{
+    padding: 230px 0 0 0;
+  }
+  .content-left h1{
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .family-doc-area, .core-value-area, .app-screen-area, .app-download-area, .team-area, .contact-area{
+    padding: 40px 0 0 0;
+  }
+  .img-family-doctor{
+    margin-top: -20px;
+  }
+  .family-doc-card p{
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .img-core-value{
+    margin-top: -30px;
+  }
+  .core-value-title{
+    display: flex;
+    justify-content: start;
+    padding-left: 15px;
+  }
+  .play-btn{
+    width: 60px;
+    height: 60px;
+  }
+  .core-value-right{
+    margin-left: 40px;
+  }
+  .core-value-card{
+    height: 80px;
+    max-width: 290px;
+    padding: 20px;
+  }
+  .core-value-card-1{
+    margin-left: 0;
+  }
+  .core-value-card-2{
+    margin-left: -10px;
+  }
+  .core-value-card-3{
+    margin-left: 0;
+  }
+  .core-value-card-4{
+    margin-left: 0;
+  }
+  .core-value-card-1::before{
+    content: url(../img/icon-core-value-01.png);
+    margin-top: 5px;
+    margin-left: -55px;
+  }
+  .core-value-card-2::before{
+    content: url(../img/icon-core-value-02.png);
+    margin-top: 5px;
+    margin-left: -55px;
+  }
+  .core-value-card-2{
+    margin-left: 0;
+  }
+  .core-value-card-3::before{
+    content: url(../img/icon-core-value-03.png);
+    margin-top: 5px;
+    margin-left: -55px;
+  }
+  .core-value-card p{
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .app-download-area{
+    padding: 60px 0 60px 0;
+  }
+  .img-consultent{
+    width: 100%;
+  }
+  .footer-logo{ 
+    width: 50%;
+  }
+  .service-page-title{
+    padding-top: 120px;
+    font-size: 32px;
+  }
+  .second-openion-title{
+    padding-top: 120px;
+    font-size: 30px;
+    margin-left: -30px;
+  }
+  .price-one-header-left{
+    min-height: 111px;
+  }
+  .price-one-header-right{
+    min-height: 111px;
+  }
+  .price-one-header-left h4{
+    font-size: 18px;
+  }
+  .price-one-header-right h3{
+    font-size: 24px;
+  }
+  .package-section{
+    height: 240px;
+  }
+  .service-1{
+    height: 120px;
+  }
+  .service-2{
+    height: 160px;
+  }
+  .service-3{
+    height: 200px;
+  }
+  .service-4{
+    height: 260px;
+  }
+  
+}
