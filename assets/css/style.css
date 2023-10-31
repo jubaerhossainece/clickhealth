@@ -395,11 +395,16 @@ border-radius: 25px;
 
 /* about us section   */
 .app-about-us-area {
-  background-color: var(--main-bg-color);
+  background-color: white;
   padding: 60px 0;
   margin-top: 80px;
-  color: #fff;
+  color: #000;
 }
+
+.text-blue{
+  color: #1d5cc5;
+}
+
 /*---------Family Doctor Area---------*/
 
 .family-doc-area, .core-value-area, .app-screen-area, .team-area, .contact-area{
