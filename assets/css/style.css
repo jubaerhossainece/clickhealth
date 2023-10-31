@@ -1132,9 +1132,16 @@ animation-delay: 4s;
 }
 
 .package-section{
-  height: 140px;
+  height: 210px;
   border-bottom: 1px solid #bbb;
 }
+
+.package-section > p{
+  line-height: normal;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
 .package-section-1{
   display: flex;
   justify-content: center;
@@ -1208,7 +1215,15 @@ color: #999999!important;
   text-align: center;
 }
 
-.service-card p{
+.service-detail{
+  padding: 20px;
+}
+
+.service-detail > ul > li{
+  list-style: inside;
+}
+
+.service-card > p{
   line-height: 24px;
   padding: 20px;
   min-height: 230px;
