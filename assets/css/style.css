@@ -2064,7 +2064,11 @@ input[type="checkbox"]:checked::before{
 }
 
 /* --------/ClickParentsCare Form-------- */
-  
+.col-lg-8.service-left-section .service-detail {
+  height: 310px;
+}
+
+
 @media (min-width: 1430px) { 
 .container { max-width: 1260px; }
 }
