@@ -185,18 +185,18 @@
                                         </div>
                                         <div class="row">
                                           <div class="col-12">
-                                            <label class="field-title">Address <span style="color: red !important; display: inline; float: none;">*</span><small class="ml-1">(Address of the CareOverseer)</small></label>
+                                            <label class="field-title">Address <small class="ml-1">(Address of the CareOverseer)</small></label>
                                           </div>
                                         </div>
                                         <div class="row">
-                                          <div class="col-sm-6"><input type="text" name="city" placeholder="City" required="required" /> </div>
+                                          <div class="col-sm-6"><input type="text" name="city" placeholder="City" /> </div>
                                           <div class="col-sm-6"><input type="text" name="state" placeholder="State/Region/Province" /> </div>
                                           <div class="col-sm-6"><input type="text" name="zip" placeholder="Postal / Zip Code" /> </div>
                                         </div>
                                         <div class="row">
                                           <div class="col-sm-6">
                                             <label class="field-title" for="country">Country</label>      
-                                            <select id="country" name="country" class="form-control list-dt" required>
+                                            <select id="country" name="country" class="form-control list-dt">
                                                 <option value="">Select</option>
                                                 <option value="Afghanistan">Afghanistan</option>
                                                 <option value="Åland Islands">Åland Islands</option>
