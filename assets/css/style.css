@@ -1883,7 +1883,7 @@ h2:first-child, .h2:first-child {
   border-radius: 4px;
   cursor: pointer;
   padding: 10px 5px;
-  margin: 10px 5px
+  margin: 10px 5px;
 }
 
 #msform .action-button-previous:hover,
