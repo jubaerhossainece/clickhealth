@@ -19,7 +19,6 @@ function generateTableRows($care_recievers)
 {
   $rows = '';
   foreach ($care_recievers as $key => $care_reciever) {
-    return $care_reciever->firstname;
     $rows .= '<tr>';
     $rows .= '<td>' . $care_reciever->firstname . '</td>';
     $rows .= '<td>' . $care_reciever->lastname . '</td>';
@@ -40,30 +39,7 @@ function generateTableRows($care_recievers)
   return $rows;
 }
 
-
-$json_str = file_get_contents('php://input');
-$formData = json_decode($json_str);
-
-if (!isset($formData->cr)) {
-
-  $responseData = [
-    'status' => 'success',
-    'message' => 'No data',
-  ];
-} else {
-  $responseData = [
-    'status' => 'success',
-    'message' => 'Data received successfully',
-    'data' => $formData, // Include the form data in the response
-    'cr_data' => generateTableRows($formData->cr), // Include the form data in the response
-  ];
-}
-
-exit;
-// Send a JSON response
-header('Content-Type: application/json');
-echo json_encode($responseData);
-// exit;
+$formData = json_decode(json_encode($_POST));
 
 if ($formData->email && $formData->firstname && $formData->lastname) {
   //Create a new PHPMailer instance
@@ -114,7 +90,7 @@ if ($formData->email && $formData->firstname && $formData->lastname) {
 }
 
 header('Content-Type: application/json');
-echo json_encode($returnData);
+echo json_encode(array('data' => $formData, 'response' => $returnData));
 
 
 
