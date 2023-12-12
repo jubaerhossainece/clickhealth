@@ -69,8 +69,8 @@ if ($email && $firstname && $lastname) {
   $mail->addReplyTo($email, $fullName);
 
   //Set who the message is to be sent to
-  // $mail->addAddress("hello@clickhealth.services", "Hello");
-  $mail->addAddress("jubaer.hossain@mpower-social.com", "Jubaer");
+  $mail->addAddress("hello@clickhealth.services", "Hello");
+  // $mail->addAddress("jubaer.hossain@mpower-social.com", "Jubaer");
 
 
   //Set the subject line
