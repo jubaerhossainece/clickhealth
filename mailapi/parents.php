@@ -76,7 +76,7 @@ if ($email && $firstname && $lastname) {
   //Set the subject line
   $mail->Subject = 'Click Health Parents Care';
 
-  $communication = $pref_com ? $pref_com : $pref_com_other;
+  $communication = $pref_com == 'Other' ? $pref_com_other : $pref_com;
 
   //Replace the plain text body with one created manually
   $mail->Body = "<ul><li>First Name: <strong>" . $firstname . "</strong></li><li>Last Name: <strong>" . $lastname . "</strong></li><li>Email: <strong>" . $email . "</strong></li><li>Tel: <strong>" . $phone . "</strong></li><li>Communication: <strong>" . $communication . "</strong></li><li>City: <strong>" . $city . "</strong></li><li>State: <strong>" . $state . "</strong></li><li>ZIP: <strong>" . $zip . "</strong></li><li>Country: <strong>" . $country . "</strong></li><li>Additional Care Overseers: <strong>" . $additional_careOverseers . "<li>Overseer: <strong>" . $overseer . "</strong></li></ul><h3>Care Recievers</h3><table border='1'><thead><tr><th>First Name</th><th>Last Name</th><th>Address</th><th>Age</th><th>Tel</th><th>Relationship</th><th>Care Giver</th></tr></thead><tbody>" . generateTableRows($formData->cr) . "</tbody></table>";
