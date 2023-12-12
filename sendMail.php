@@ -11,7 +11,6 @@ $fullname = htmlspecialchars($_POST['fullname']);
 $message = htmlspecialchars($_POST['message']);
 
 if ($email && $fullname && $message) {
-	//Create a new PHPMailer instance
 	$mail = new PHPMailer();
 
 	//Tell PHPMailer to use SMTP
@@ -38,6 +37,9 @@ if ($email && $fullname && $message) {
 	//Whether to use SMTP authentication
 	$mail->SMTPAuth = true;
 
+	$mail->CharSet = 'UTF-8';
+	$mail->Encoding = 'base64';
+	
 	//Username to use for SMTP authentication - use full email address for gmail
 	$mail->Username = 'clickseniorcare@gmail.com';
 
@@ -48,24 +50,22 @@ if ($email && $fullname && $message) {
 	$mail->setFrom('clickseniorcare@gmail.com', 'Click Health');
 
 	//Set an alternative reply-to address
-	$mail->addReplyTo($_POST['email'], $_POST['fullname']);
+	$mail->addReplyTo($email, $fullname);
 
 	//Set who the message is to be sent to
-	$mail->addAddress("rasik@clickhealth.services", "Rasik");
-	$mail->addAddress("hello@clickhealth.services", "Hello");
-	//Set the subject line
+	// $mail->addAddress("rasik@clickhealth.services", "Rasik");
+	// $mail->addAddress("hello@clickhealth.services", "Hello");
+  $mail->addAddress("jubaer.hossain@mpower-social.com", "Jubaer");
+  //Set the subject line
 	if ($_POST['page'] == 'price') {
 		$mail->Subject = 'Click Health Pricing Query';
 	} else {
 		$mail->Subject = 'Click Health Contact Info';
 	}
 
-	//Replace the plain text body with one created manually
-	$senderInfo = "Name of Sender: " . $_POST['fullname'] . ", Email of Sender: " . $_POST['email'] . "\n";
-	$mail->Body = $senderInfo . "\n" . $_POST['message'];
+	$senderInfo = "Name of Sender: " . $fullname . ", Email of Sender: " . $email . "\n";
+	$mail->Body = $senderInfo . "\n" . $message;
 
-
-	//send the message, check for errors
 	if (!$mail->send()) {
 		echo 'Mailer Error: ' . $mail->ErrorInfo;
 	} else {

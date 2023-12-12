@@ -58,60 +58,27 @@ function generateGuardianForm(index) {
   return guardian;
 }
 
-function multiStateForm() {
-
-  $('#msform').submit(function (e) {
+function multiStateForm(callback) {
+  $("#msform").submit(function (e) {
     e.preventDefault();
 
     var formData = $(this).serializeArray();
 
     $.ajax({
-        type: 'POST',
-        url: '/clickhealth/mailapi/parents.php',
-        data: formData,
-        success: function (response) {
-            console.log(response);
-            // Handle success response here
-        },
-        error: function (error) {
-            console.error(error);
-            // Handle error here
-        }
+      type: "POST",
+      url: "/clickhealth/mailapi/parents.php",
+      data: formData,
+      success: function (response) {
+        callback(response);
+      },
+      error: function (error) {
+        console.error(error);
+      },
     });
-});
-
-  // document.getElementById("msform").onsubmit = function (event) {
-  //   event.preventDefault();
-
-  //   var formElement = document.getElementById("msform");
-  //   var formData = new FormData(formElement);
-
-  //   fetch("/clickhealth/mailapi/parents.php", {
-  //     method: "POST",
-  //     headers: {
-  //       'Content-Type': 'application/json', // Set the "Content-Type" header
-  //     },
-  //     body: JSON.stringify(Object.fromEntries(formData)),
-  //   })
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       return response.text();
-  //     })
-  //     .then((data) => {
-  //       // Handle the successful response here
-  //       console.log(data);
-  //     })
-  //     .catch((error) => {
-  //       // Handle errors here
-  //       console.error("Fetch error:", error);
-  //     });
-  // };
+  });
 }
 
-let navButton = `<input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="submit" name="make_payment" onclick="multiStateForm()" class="next action-button" value="Confirm" />`;
-// $("#care-receiver").append(navButton);
+let navButton = `<input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="submit" name="make_payment" class="next action-button" value="Confirm" />`;
 
 // populate required number of care receiver
 $("#overseer").on("change", function () {
@@ -128,7 +95,7 @@ $("#overseer").on("change", function () {
 //jQuery time
 var current_fs, next_fs, previous_fs; //fieldsets
 
-$("fieldset").on("click", ".next", function () {
+$("fieldset").on("click", ".next", async function () {
   next_fs = $(this).parent().next();
   var numberOfRequiredElements = $(this)
     .parent()
@@ -137,9 +104,15 @@ $("fieldset").on("click", ".next", function () {
       return !$(this).val();
     }).length;
 
-  console.log(numberOfRequiredElements);
-
   if (numberOfRequiredElements === 0) {
+    if ($(this).val() && $(this).val() == "Confirm") {
+      multiStateForm(function (response) {
+        if (response.status == 200) {
+          console.log("success");
+        }
+      });
+    }
+
     //activate next step on progressbar using the index of next_fs
     $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 

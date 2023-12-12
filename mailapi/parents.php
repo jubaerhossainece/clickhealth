@@ -3,11 +3,6 @@ header('Access-Control-Allow-Origin: *');
 
 $contentType = $_SERVER['CONTENT_TYPE'];
 
-// if($contentType != 'application/json'){
-//   header($_SERVER['SERVER_PROTOCOL'], '500 Internal Server Error');
-//   exit();
-// }
-
 //Import PHPMailer classes into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -20,20 +15,13 @@ function generateTableRows($care_recievers)
   $rows = '';
   foreach ($care_recievers as $key => $care_reciever) {
     $rows .= '<tr>';
-    $rows .= '<td>' . $care_reciever->firstname . '</td>';
-    $rows .= '<td>' . $care_reciever->lastname . '</td>';
-    $rows .= '<td>' . $care_reciever->address . '</td>';
-    $rows .= '<td>' . $care_reciever->age . '</td>';
-    $rows .= '<td>' . $care_reciever->phone . '</td>';
-    $rows .= '<td>' . $care_reciever->relationship . '</td>';
-    // $rows .= '<td>'.$care_reciever->comment.'</td>';
-    // if($care_reciever->care == "Yes" || $care_reciever->care == "Different CareGiver"){
-    //   $rows .= '<td><ul><li>First Name: '.$care_reciever->care_giver->firstname.'</li><li>Last Name: '.$care_reciever->care_giver->lastname.'</li><li>Relationship: '.$care_reciever->care_giver->relationship.'</li><li>Tel: '.$care_reciever->care_giver->tel.'</li><li>Email: '.$care_reciever->care_giver->email.'</li></ul></td>';
-    // }elseif($care_reciever->care == "Same as above"){
-    //   $rows .= '<td><ul><li>First Name: '.$care_recievers[$key-1]->care_giver->firstname.'</li><li>Last Name: '.$care_recievers[$key-1]->care_giver->lastname.'</li><li>Relationship: '.$care_recievers[$key-1]->care_giver->relationship.'</li><li>Tel: '.$care_recievers[$key-1]->care_giver->tel.'</li><li>Email: '.$care_recievers[$key-1]->care_giver->email.'</li></ul></td>';
-    // }else{
-    //   $rows .= '<td>'.$care_reciever->care.'</td>';
-    // }
+    $rows .= '<td>' . htmlspecialchars($care_reciever->firstname) . '</td>';
+    $rows .= '<td>' . htmlspecialchars($care_reciever->lastname) . '</td>';
+    $rows .= '<td>' . htmlspecialchars($care_reciever->address) . '</td>';
+    $rows .= '<td>' . htmlspecialchars($care_reciever->age) . '</td>';
+    $rows .= '<td>' . htmlspecialchars($care_reciever->phone) . '</td>';
+    $rows .= '<td>' . htmlspecialchars($care_reciever->relationship) . '</td>';
+    $rows .= '<td>' . htmlspecialchars($care_reciever->caregiver) . '</td>';
     $rows .= '</tr>';
   }
   return $rows;
@@ -41,11 +29,22 @@ function generateTableRows($care_recievers)
 
 $formData = json_decode(json_encode($_POST));
 
-if ($formData->email && $formData->firstname && $formData->lastname) {
-  //Create a new PHPMailer instance
+// sanitise form inputs
+$firstname = htmlspecialchars($formData->firstname);
+$lastname = htmlspecialchars($formData->lastname);
+$phone = htmlspecialchars($formData->phone);
+$pref_com = htmlspecialchars($formData->pref_com);
+$city = htmlspecialchars($formData->city);
+$state = htmlspecialchars($formData->state);
+$zip = htmlspecialchars($formData->zip);
+$additional_careOverseers = htmlspecialchars($formData->additional_careOverseers);
+$overseer = htmlspecialchars($formData->overseer);
+$country = htmlspecialchars($formData->country);
+$email = filter_var($formData->email, FILTER_VALIDATE_EMAIL);
+
+if ($email && $firstname && $lastname) {
   $mail = new PHPMailer();
 
-  //Tell PHPMailer to use SMTP
   $mail->isSMTP();
   $mail->SMTPDebug = SMTP::DEBUG_OFF;
   $mail->Host = 'smtp.gmail.com';
@@ -53,6 +52,9 @@ if ($formData->email && $formData->firstname && $formData->lastname) {
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->SMTPAuth = true;
   $mail->IsHTML(true);
+  // set this for unicode input
+	$mail->CharSet = 'UTF-8';
+	$mail->Encoding = 'base64';
 
   //Username to use for SMTP authentication - use full email address for gmail
   $mail->Username = 'clickseniorcare@gmail.com';
@@ -64,8 +66,8 @@ if ($formData->email && $formData->firstname && $formData->lastname) {
   $mail->setFrom('clickseniorcare@gmail.com', 'Click Health');
 
   //Set an alternative reply-to address
-  $fullName = $formData->firstname . ' ' . $formData->lastname;
-  $mail->addReplyTo($formData->email, $fullName);
+  $fullName = $firstname . ' ' . $lastname;
+  $mail->addReplyTo($email, $fullName);
 
   //Set who the message is to be sent to
   // $mail->addAddress("proshanto@mpower-social.com", "Proshanto Kumar");
@@ -77,7 +79,7 @@ if ($formData->email && $formData->firstname && $formData->lastname) {
   $mail->Subject = 'Click Health Parents Care';
 
   //Replace the plain text body with one created manually
-  $mail->Body = "<ul><li>First Name: <strong>" . $formData->firstname . "</strong></li><li>Last Name: <strong>" . $formData->lastname . "</strong></li><li>Email: <strong>" . $formData->email . "</strong></li><li>Tel: <strong>" . $formData->phone . "</strong></li><li>Communication: <strong>" . $formData->pref_com . "</strong></li><li>City: <strong>" . $formData->city . "</strong></li><li>State: <strong>" . $formData->state . "</strong></li><li>ZIP: <strong>" . $formData->zip . "</strong></li><li>Country: <strong>" . $formData->country . "</strong></li><li>Additional Care Overseers: <strong>" . $formData->additional_careOverseers . "</strong></li><li>Other: <strong>gjksdfh</strong></li><li>Overseer: <strong>" . $formData->overseer . "</strong></li></ul><h3>Care Recievers</h3><table border='1'><thead><tr><th>First Name</th><th>Last Name</th><th>Address</th><th>Age</th><th>Tel</th><th>Relationship</th><th>Care Giver</th></tr></thead><tbody>" . generateTableRows($formData->cr) . "</tbody></table>";
+  $mail->Body = "<ul><li>First Name: <strong>" . $firstname . "</strong></li><li>Last Name: <strong>" . $lastname . "</strong></li><li>Email: <strong>" . $email . "</strong></li><li>Tel: <strong>" . $phone . "</strong></li><li>Communication: <strong>" . $pref_com . "</strong></li><li>City: <strong>" . $city . "</strong></li><li>State: <strong>" . $state . "</strong></li><li>ZIP: <strong>" . $zip . "</strong></li><li>Country: <strong>" . $country . "</strong></li><li>Additional Care Overseers: <strong>" . $additional_careOverseers . "<li>Overseer: <strong>" . $overseer . "</strong></li></ul><h3>Care Recievers</h3><table border='1'><thead><tr><th>First Name</th><th>Last Name</th><th>Address</th><th>Age</th><th>Tel</th><th>Relationship</th><th>Care Giver</th></tr></thead><tbody>" . generateTableRows($formData->cr) . "</tbody></table>";
 
   //send the message, check for errors  
   if (!$mail->send()) {
@@ -86,11 +88,11 @@ if ($formData->email && $formData->firstname && $formData->lastname) {
     $returnData = ['status' => 200, 'error' => 0];
   }
 } else {
-  $returnData = ['status' => 205, 'error' => 1, 'errorMessage' => "Please fill up 'First Name', 'Last name', 'Email' fields with POST method"];
+  $returnData = ['status' => 205, 'error' => 1, 'errorMessage' => "Please fill up 'First Name', 'Last name', 'Email' fields"];
 }
 
 header('Content-Type: application/json');
-echo json_encode(array('data' => $formData, 'response' => $returnData));
+echo json_encode($returnData);
 
 
 
