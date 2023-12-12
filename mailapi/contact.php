@@ -55,6 +55,7 @@ if ($email && $fullname && $message) {
 
 	//Set who the message is to be sent to
 	$mail->addAddress("hello@clickhealth.services", "Hello");
+	// $mail->addAddress("jubaer.hossain@mpower-social.com", "Hello");
 
   //Set the subject line
 	if ($_POST['page'] == 'price') {
@@ -66,10 +67,11 @@ if ($email && $fullname && $message) {
 	$senderInfo = "Name of Sender: " . $fullname . ", Email of Sender: " . $email . "\n";
 	$mail->Body = $senderInfo . "\n" . $message;
 
-	/send the message, check for errors  
+	// /send the message, check for errors
   if (!$mail->send()) {
     $returnData = ['status' => 205, 'error' => 1, 'errorMessage' => $mail->ErrorInfo];
   } else {
+		header('Location: ./../success.html');
     $returnData = ['status' => 200, 'error' => 0];
   }
 
