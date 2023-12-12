@@ -27,12 +27,12 @@ function generateTableRows($care_recievers)
 }
 
 $formData = json_decode(json_encode($_POST));
-
 // sanitise form inputs
 $firstname = htmlspecialchars($formData->firstname);
 $lastname = htmlspecialchars($formData->lastname);
 $phone = htmlspecialchars($formData->phone);
 $pref_com = htmlspecialchars($formData->pref_com);
+$pref_com_other = htmlspecialchars($formData->pref_com_other);
 $city = htmlspecialchars($formData->city);
 $state = htmlspecialchars($formData->state);
 $zip = htmlspecialchars($formData->zip);
@@ -69,14 +69,17 @@ if ($email && $firstname && $lastname) {
   $mail->addReplyTo($email, $fullName);
 
   //Set who the message is to be sent to
-  $mail->addAddress("hello@clickhealth.services", "Hello");
+  // $mail->addAddress("hello@clickhealth.services", "Hello");
+  $mail->addAddress("jubaer.hossain@mpower-social.com", "Jubaer");
 
 
   //Set the subject line
   $mail->Subject = 'Click Health Parents Care';
 
+  $communication = $pref_com ? $pref_com : $pref_com_other;
+
   //Replace the plain text body with one created manually
-  $mail->Body = "<ul><li>First Name: <strong>" . $firstname . "</strong></li><li>Last Name: <strong>" . $lastname . "</strong></li><li>Email: <strong>" . $email . "</strong></li><li>Tel: <strong>" . $phone . "</strong></li><li>Communication: <strong>" . $pref_com . "</strong></li><li>City: <strong>" . $city . "</strong></li><li>State: <strong>" . $state . "</strong></li><li>ZIP: <strong>" . $zip . "</strong></li><li>Country: <strong>" . $country . "</strong></li><li>Additional Care Overseers: <strong>" . $additional_careOverseers . "<li>Overseer: <strong>" . $overseer . "</strong></li></ul><h3>Care Recievers</h3><table border='1'><thead><tr><th>First Name</th><th>Last Name</th><th>Address</th><th>Age</th><th>Tel</th><th>Relationship</th><th>Care Giver</th></tr></thead><tbody>" . generateTableRows($formData->cr) . "</tbody></table>";
+  $mail->Body = "<ul><li>First Name: <strong>" . $firstname . "</strong></li><li>Last Name: <strong>" . $lastname . "</strong></li><li>Email: <strong>" . $email . "</strong></li><li>Tel: <strong>" . $phone . "</strong></li><li>Communication: <strong>" . $communication . "</strong></li><li>City: <strong>" . $city . "</strong></li><li>State: <strong>" . $state . "</strong></li><li>ZIP: <strong>" . $zip . "</strong></li><li>Country: <strong>" . $country . "</strong></li><li>Additional Care Overseers: <strong>" . $additional_careOverseers . "<li>Overseer: <strong>" . $overseer . "</strong></li></ul><h3>Care Recievers</h3><table border='1'><thead><tr><th>First Name</th><th>Last Name</th><th>Address</th><th>Age</th><th>Tel</th><th>Relationship</th><th>Care Giver</th></tr></thead><tbody>" . generateTableRows($formData->cr) . "</tbody></table>";
 
   //send the message, check for errors  
   if (!$mail->send()) {

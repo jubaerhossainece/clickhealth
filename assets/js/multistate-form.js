@@ -63,7 +63,6 @@ function multiStateForm(callback) {
     e.preventDefault();
 
     var formData = $(this).serializeArray();
-
     $.ajax({
       type: "POST",
       url: "mailapi/parents.php",
