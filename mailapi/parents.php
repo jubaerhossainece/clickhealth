@@ -9,7 +9,6 @@ use PHPMailer\PHPMailer\SMTP;
 
 require 'vendor/autoload.php';
 
-
 function generateTableRows($care_recievers)
 {
   $rows = '';
@@ -70,10 +69,8 @@ if ($email && $firstname && $lastname) {
   $mail->addReplyTo($email, $fullName);
 
   //Set who the message is to be sent to
-  // $mail->addAddress("proshanto@mpower-social.com", "Proshanto Kumar");
-  // $mail->addAddress("rasik@clickhealth.services", "Rasik");
-  $mail->addAddress("jubaer.hossain@mpower-social.com", "Jubaer");
-  // $mail->addAddress("hello@clickhealth.services", "Hello");
+  $mail->addAddress("hello@clickhealth.services", "Hello");
+
 
   //Set the subject line
   $mail->Subject = 'Click Health Parents Care';

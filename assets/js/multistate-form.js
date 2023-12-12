@@ -66,7 +66,7 @@ function multiStateForm(callback) {
 
     $.ajax({
       type: "POST",
-      url: "/clickhealth/mailapi/parents.php",
+      url: "mailapi/parents.php",
       data: formData,
       success: function (response) {
         callback(response);

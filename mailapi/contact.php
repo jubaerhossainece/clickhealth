@@ -54,9 +54,8 @@ if ($email && $fullname && $message) {
 	$mail->addReplyTo($email, $fullname);
 
 	//Set who the message is to be sent to
-	$mail->addAddress("rasik@clickhealth.services", "Rasik");
 	$mail->addAddress("hello@clickhealth.services", "Hello");
-  // $mail->addAddress("jubaer.hossain@mpower-social.com", "Jubaer");
+
   //Set the subject line
 	if ($_POST['page'] == 'price') {
 		$mail->Subject = 'Click Health Pricing Query';
@@ -67,12 +66,16 @@ if ($email && $fullname && $message) {
 	$senderInfo = "Name of Sender: " . $fullname . ", Email of Sender: " . $email . "\n";
 	$mail->Body = $senderInfo . "\n" . $message;
 
-	if (!$mail->send()) {
-		echo 'Mailer Error: ' . $mail->ErrorInfo;
-	} else {
-		header('Location: ./../success.html');
-	}
+	/send the message, check for errors  
+  if (!$mail->send()) {
+    $returnData = ['status' => 205, 'error' => 1, 'errorMessage' => $mail->ErrorInfo];
+  } else {
+    $returnData = ['status' => 200, 'error' => 0];
+  }
 
 } else {
-	echo 'Please provide valid information';
+  $returnData = ['status' => 205, 'error' => 1, 'errorMessage' => "Please fill up 'First Name', 'Last name', 'Email' fields"];
 }
+
+header('Content-Type: application/json');
+echo json_encode($returnData);
